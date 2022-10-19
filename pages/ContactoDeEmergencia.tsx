@@ -2,8 +2,7 @@ import { useEffect, useState } from 'react';
 import { Text, StyleSheet, FlatList, Linking, Platform, View, Button } from "react-native";
 import * as Contacts from "expo-contacts";
 import * as React from 'react';
-import { getData, storeData } from '../components/localstorage';
-import { ShakeEventExpo } from '../helpers/shakeEvent';
+import { getData, storeData } from '../helpers/localstorage';
 
 const ContactoDeEmergencia = ({ navigation }: any) => {
   const [contacts, setContacts] = useState<Contacts.Contact[]>([]);
@@ -25,7 +24,7 @@ const ContactoDeEmergencia = ({ navigation }: any) => {
     (async () => {
       const data = await getData("emergency_contact");
       setEmergencyContact(data || "");
-    })
+    })()
   }, []);
 
   const keyExtractor = (item: any, idx: number) => {
